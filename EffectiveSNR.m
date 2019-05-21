@@ -67,6 +67,7 @@ for k=1:2
     end
     
     betpic=summfs1(11:sizen-11,11:sizen-11);
+    myfig(betpic)
     hd=summfs(11:sizen-11,11:sizen-11);
 % 
 %      myfig(betpic)
@@ -117,7 +118,7 @@ for k=1:2
         kurt((k-1)*3+i)=kurtosis(vected);
         percent((k-1)*3+i)=content/length(vected);
         
-        [cdf((k-1)*3+i),esnr1((k-1)*3+i),lambda((k-1)*3+i)] = probmapper(vals((k-1)*3+i),vected);
+        %[cdf((k-1)*3+i),esnr1((k-1)*3+i),lambda((k-1)*3+i)] = probmapper(vals((k-1)*3+i),vected);
         
         disp(horzcat([num2str((k-1)*3+i) ' of 6 Finshed!' newline]))
            

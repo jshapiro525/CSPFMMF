@@ -8,7 +8,7 @@ tic
 epsilon = 0.008; %.008 is used for data analysis
 
 load('betpicandinjections75_1.mat')
-temploc = [43 56];
+temploc = [43 57];
 
 % load('hd14706injections75.mat')
 % temploc = [33 58];
