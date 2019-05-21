@@ -64,7 +64,7 @@ clear all;
 load('betapicworkspaceres')
 
 epsilon = 0.008; %.008 is used for data analysis
-modes = 2; 
+modes = 1:35; 
 
 load('hd14706injections75.mat')
 temploc = [33 58];
@@ -77,7 +77,7 @@ totalpert = noise + injected;
 [CSP,Z_actual,Phi] = splitcspfunc(totalpert, parangs, lams, modes);
 
 figs=0;
-[Z_true, Phi_true, Z, Zs, delZ, planetstack, fmstack] = splitFMeveryslice(totalpert, noise, injected, parangs, lams, modes, figs);
+[Z_true, Phi_true, Z, Zs, delZ] = splitFMeveryslice(totalpert, noise, injected, parangs, lams, modes, figs);
 for i = 1:length(lams)
      [slicemfs(:,:,:,i)] = fmmf(delZ(:,:,i), temploc, Z_true(:,:,i), 21, modes);
      fprintf(horzcat(['MF is ' num2str(i/length(lams)*100) ' percent done\n'])) 

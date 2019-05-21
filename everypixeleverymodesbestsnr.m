@@ -2,14 +2,20 @@ close all
 clear all
 clc
 
-load('allmodecspfmmfdata.mat')
+%load('BPmfmodes')
+% bploc1=[43 57];
+% bploc2=[39 18];
+% planetlocs=[bploc1;bploc2];
+
+load('HDmfmodes.mat')
+hdloc=[33 58];
+planetlocs=[hdloc];
+
+
 
 imdim=75;
 nmodes=size(slicemfs,3);
 nlams=size(slicemfs,4);
-
-bploc1=[43 57];
-bploc2=[39 18];
 
 goodmodes=[1:6 8 9 11 14 15 17 21 23 24 26:29 31 34 35 36];
 % goodmodes=[1 2];
@@ -43,11 +49,11 @@ for pixels = 1:imdim^2
     for k=modesused
         
         if k==nmodes
-            [finalsnr(rowloc,colloc),~,~,~]=snrcalc(modes(:,:,k),rowloc,colloc,4,imdim,[bploc1;bploc2]);
+            [finalsnr(rowloc,colloc),~,~,~]=snrcalc(modes(:,:,k),rowloc,colloc,4,imdim,planetlocs);
             trackingimage=modes(:,:,k);           
             pixelvect(rowloc,colloc,k)=1;
         else
-            [tempsnr,tempval,tempdev,tempm]=snrcalc(trackingimage+modes(:,:,k),rowloc,colloc,4,imdim,[bploc1;bploc2]);
+            [tempsnr,tempval,tempdev,tempm]=snrcalc(trackingimage+modes(:,:,k),rowloc,colloc,4,imdim,planetlocs);
             if tempsnr>finalsnr(rowloc,colloc)
                 finalsnr(rowloc,colloc)=tempsnr;
                 finalval(rowloc,colloc)=tempval;
