@@ -6,7 +6,7 @@ center=[ceil(imdim/2) ceil(imdim/2)];
     
 for i=1:imdim
     for j=1:imdim
-        if norm([i j]-center)<=10 || norm([i j]-loc)<=5
+        if norm([i j]-center)<=11 || norm([i j]-loc)<=5
             Image(i,j)=nan;
         end
     end
