@@ -2,7 +2,7 @@
 % clear all; 
 % clc;
 % 
-epsilon = 0.01;
+epsilon = 0.008;
 modes = 2;
 % 
 % lams = 1.2:.2:1.8;
@@ -466,56 +466,56 @@ title('Forward Model of planet signal')
 myfig(fullpstack)
 title('Full Forward Model of planet signal')
 
-% Ztemp = inv(sqrt(rhomat))*Ws*S1;
+Ztemp = inv(sqrt(rhomat))*Ws*S1;
 
 
-% myfig(Z_un)
-% title('Actual, unperturbed Z matrix')
-% % 
-% myfig(Zs)
-% title('Estimated unperturbed Z matrix')
+myfig(Z_un)
+title('Actual, unperturbed Z matrix')
 % 
-% myfig(Z_un-Zs)
-% title('Difference between actual and estimated unperturbed Z matrix')
-% 
-% myfig(Z_true)
-% title('Actual Z Matrix')
-% 
-% myfig(Z)
-% title('Estimated FM Z')
-% 
-% myfig(abs(Z_true-Z))
-% title('Z Raw difference')
-% 
-% perdifZ = abs((Z_true-Z)./Z_true)*100; 
-% pdifZtoun = abs((Z_true-Zs)./Z_true)*100;
-% 
-% myfig(perdifZ)
-% title('Full Z percent difference')
-% 
-% perdifZ = reshape(perdifZ,n*pix,1);
-% pdifZtoun = reshape(pdifZtoun,n*pix,1);
-% 
-% bins = linspace(0, ceil(max(perdifZ))/10000, ceil(max(perdifZ)));
-% xc = histc(perdifZ,bins);
-% 
-% figure()
-% semilogx(bins,xc,'r')
-% hold on
-% h = line([median(perdifZ) median(perdifZ)],[0 xc(2)]);
-% title('Distribution of percent error')
-% ylabel('Number of entries in Z')
-% xlabel('Percent Error')
-% legend('Distribution of Percent Error',horzcat(['Median = ' num2str(median(perdifcbar)) '%']))
-% 
-% bins = linspace(0, ceil(max(pdifZtoun)), ceil(max(pdifZtoun)));
-% xc = histc(pdifZtoun,bins);
-% 
-% figure()
-% semilogx(bins,xc,'r')
-% hold on
-% h = line([median(pdifZtoun) median(pdifZtoun)],[0 xc(2)]);
-% title('Distribution of percent error to just the unperturbed model')
-% ylabel('Number of entries in Z')
-% xlabel('Percent Error')
-% legend('Distribution of Percent Error',horzcat(['Median = ' num2str(median(pdifcbartoun)) '%']))
+myfig(Zs)
+title('Estimated unperturbed Z matrix')
+
+myfig(Z_un-Zs)
+title('Difference between actual and estimated unperturbed Z matrix')
+
+myfig(Z_true)
+title('Actual Z Matrix')
+
+myfig(Z)
+title('Estimated FM Z')
+
+myfig(abs(Z_true-Z))
+title('Z Raw difference')
+
+perdifZ = abs((Z_true-Z)./Z_true)*100; 
+pdifZtoun = abs((Z_true-Zs)./Z_true)*100;
+
+myfig(perdifZ)
+title('Full Z percent difference')
+
+perdifZ = reshape(perdifZ,n*pix,1);
+pdifZtoun = reshape(pdifZtoun,n*pix,1);
+
+bins = linspace(0, ceil(max(perdifZ))/10000, ceil(max(perdifZ)));
+xc = histc(perdifZ,bins);
+
+figure()
+semilogx(bins,xc,'r')
+hold on
+h = line([median(perdifZ) median(perdifZ)],[0 xc(2)]);
+title('Distribution of percent error')
+ylabel('Number of entries in Z')
+xlabel('Percent Error')
+legend('Distribution of Percent Error',horzcat(['Median = ' num2str(median(perdifcbar)) '%']))
+
+bins = linspace(0, ceil(max(pdifZtoun)), ceil(max(pdifZtoun)));
+xc = histc(pdifZtoun,bins);
+
+figure()
+semilogx(bins,xc,'r')
+hold on
+h = line([median(pdifZtoun) median(pdifZtoun)],[0 xc(2)]);
+title('Distribution of percent error to just the unperturbed model')
+ylabel('Number of entries in Z')
+xlabel('Percent Error')
+legend('Distribution of Percent Error',horzcat(['Median = ' num2str(median(pdifcbartoun)) '%']))
