@@ -301,6 +301,6 @@ Zerror = abs((Z_true-Z)./Z_true)*100;
 temp = reshape(Zerror,n*pix,1);
 
 meanerror = mean(temp);
-medianerror = median(temp);
+medianerror = sum(sum(Z_true.*Z))/sum(sum(Z_true.*Z_true));
 
 end

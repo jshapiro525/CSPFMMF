@@ -67,7 +67,6 @@ for k=1:2
     end
     
     betpic=summfs1(11:sizen-11,11:sizen-11);
-    myfig(betpic)
     hd=summfs(11:sizen-11,11:sizen-11);
 % 
 %      myfig(betpic)
@@ -97,7 +96,7 @@ for k=1:2
         mask_annulus = mask&mask2;
         masked=(baseimage+.0000000001).*mask_annulus;
         masked(masked==0)=nan;
-          %myfig(masked);
+          myfig(masked);
         vected=reshape(masked,length(betpic(:,1))^2,1);
         vected=vected(~isnan(vected));
        
