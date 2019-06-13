@@ -2,20 +2,21 @@ close all
 clear all
 clc
 
-%load('BPmfmodes')
-% bploc1=[43 57];
-% bploc2=[39 18];
-% planetlocs=[bploc1;bploc2];
+load('BPmfmodes')
+bploc1=[43 57];
+bploc2=[39 18];
+planetlocs=[bploc1;bploc2];
 
-load('HDmfmodes.mat')
-hdloc=[33 58];
-planetlocs=[hdloc];
+% load('HDmfmodes.mat')
+% hdloc=[33 58];
+% planetlocs=[hdloc];
 
 
 
 imdim=75;
 nmodes=size(slicemfs,3);
 nlams=size(slicemfs,4);
+center=[ceil(75/2) ceil(75/2)];
 
 goodmodes=[1:6 8 9 11 14 15 17 21 23 24 26:29 31 34 35 36];
 % goodmodes=[1 2];
@@ -37,12 +38,12 @@ pixelvect=zeros(imdim,imdim,nmodes);
 
 tic
 
-modesused = fliplr(1:37);
+modesused = fliplr(1:nmodes);
 for pixels = 1:imdim^2
     
     rowloc = rem(pixels,imdim);
     colloc = ceil(pixels/imdim);
-    if rowloc<11 || rowloc>imdim-11 || colloc<11 || colloc>imdim-11
+    if rowloc<11 || rowloc>imdim-11 || colloc<11 || colloc>imdim-11 || norm([rowloc colloc]-center)<=8
         continue
     end
     
@@ -64,7 +65,7 @@ for pixels = 1:imdim^2
             else
                 pixelvect(rowloc,colloc,k)=0;
             end
-            if rowloc==43 && colloc == 57 && k == modesused(end)
+            if rowloc==33 && colloc == 58 && k == modesused(end)
                 thisspot=trackingimage;
             end
           
@@ -79,7 +80,14 @@ myfig(finalsnr)
 colorbar
 
 myfig(thisspot)
-colorbar
 
-finalsnr(43,57)
-fdm=[finalval(43,57) finaldev(43,57) finalm(43,57)]
+thisspot=thisspot-min(thisspot);
+thisspot=thisspot/max(max(thisspot));
+myfig(thisspot)
+
+
+% finalsnr(43,57)
+% fdm=[finalval(43,57) finaldev(43,57) finalm(43,57)]
+
+finalsnr(33,58)
+fdm=[finalval(33,58) finaldev(33,58) finalm(33,58)]
