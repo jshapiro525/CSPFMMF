@@ -22,9 +22,9 @@ xlabel('Number of Images')
 ylabel('Mean Z Error')
 
 figure()
-plot(n,medianerror,'.')
+plot(n,abs(medianerror-1),'.')
 xlabel('Number of Images')
-ylabel('Median Z Error')
+ylabel('Photometric Error')
 
 %linear fit
 [medc1, inds] = polyfit(n,medianerror,1);
@@ -61,6 +61,7 @@ plot(sort(n),y(inds),'b')
 % residualssquared3 = sum((y-medianerror(inds)).^2)
 
 legend('Data Points','Linear','2nd Order')%,'3rd Order')
+
 
 print('imagenumbererror','-depsc')
 
