@@ -24,7 +24,7 @@ ylabel('Mean Z Error')
 figure()
 plot(n,abs(medianerror-1),'.')
 xlabel('Number of Images')
-ylabel('Photometric Error')
+ylabel('Normalized Photometric Error')
 
 %linear fit
 [medc1, inds] = polyfit(n,medianerror,1);
