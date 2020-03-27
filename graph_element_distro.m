@@ -8,15 +8,15 @@ bins = 10.^bins;
 xc = histc(vect,bins);
 
 figure()
-semilogx(bins,xc,'r','LineWidth',1.5)
+semilogx(bins,xc,'r','LineWidth',2.5)
 
 hold on
-h = line([median(vect) median(vect)],[0 max(xc)],'LineWidth',1.5);
-L = line([mean(vect) mean(vect)],[0 max(xc)],'color','K','LineStyle','--' ,'LineWidth',1.5);
+h = line([median(vect) median(vect)],[0 max(xc)],'LineWidth',2.5);
+L = line([mean(vect) mean(vect)],[0 max(xc)],'color','K','LineStyle','--' ,'LineWidth',2.5);
 title(Title)
-ylabel(Y,'FontSize',12)
-xlabel(X,'FontSize',12)
-legend(L1,horzcat(['Median = ' num2str(median(vect)) '%']),horzcat(['Mean = ' num2str(mean(vect)) '%']),'FontSize',12)
+ylabel(Y,'FontSize',18)
+xlabel(X,'FontSize',18)
+legend(L1,horzcat(['Median = ' num2str(median(vect)) '%']),horzcat(['Mean = ' num2str(mean(vect)) '%']),'FontSize',18)
 axis([10^-4 10^4 0 6*10^5])
 
 end

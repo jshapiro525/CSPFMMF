@@ -17,50 +17,10 @@ for L = 2:length(lams)
 end
 
 figure()
-plot(n,meanerror,'.')
-xlabel('Number of Images')
-ylabel('Mean Z Error')
-
-figure()
 plot(n,abs(medianerror-1),'.')
 xlabel('Number of Images')
 ylabel('Normalized Photometric Error')
 
-%linear fit
-[medc1, inds] = polyfit(n,medianerror,1);
-x = sort(n);
-y = x*medc1(1) + medc1(2);
-hold on
-plot(x,y,'k--')
-residualssquared1 = sum((y-medianerror(inds)).^2)
-
-% 2nd order poly
-[medc2, inds] = polyfit(n,medianerror,2);
-[x,inds] = sort(n);
-y2 = x.^2*medc2(1) + x*medc2(2) +medc2(3);
-hold on
-plot(x,y2,'r')
-
-
-
-%3/2 fit
-x = [[n.^(3/2)]' n' [n.^(1/2)]' ones(length(n),1)];
-y = medianerror';
-model = inv(x'*x)*x'*y;
-hold on
-y = model(1)*n.^(3/2) + model(2)*n+model(3)*n.^(1/2)+model(4);
-plot(sort(n),y(inds),'b')
-
-
-% % 3rd order poly
-% [medc3, s] = polyfit(n,medianerror,3);
-% [x,inds] = sort(n);
-% y = x.^3*medc3(1) + x.^2*medc3(2) + x*medc3(3)+medc3(4);
-% hold on
-% plot(x,y,'r')
-% residualssquared3 = sum((y-medianerror(inds)).^2)
-
-legend('Data Points','Linear','2nd Order')%,'3rd Order')
 
 
 print('imagenumbererror','-depsc')

@@ -1,6 +1,6 @@
 function [] = myfig(x)
 
-figure()
+% figure()
 image(x,'cdatamapping','scaled')
 % colorbar
     hAxes = gca;
