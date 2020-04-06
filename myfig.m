@@ -1,8 +1,8 @@
 function [] = myfig(x)
 
-% figure()
+figure()
 image(x,'cdatamapping','scaled')
-% colorbar
+colorbar
     hAxes = gca;
     axis(hAxes,'square')
 % %    hAxes.XRuler.Axle.LineStyle = 'none';  
